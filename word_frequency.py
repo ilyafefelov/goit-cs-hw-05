@@ -7,6 +7,10 @@ from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import requests
+import nltk
+
+nltk.download("stopwords")
+from nltk.corpus import stopwords
 
 # Налаштування логування
 logging.basicConfig(
@@ -16,6 +20,8 @@ logging.basicConfig(
     filemode="w",
 )
 
+# Отримання стоп-слів для англійської мови
+STOP_WORDS = set(stopwords.words("english"))
 
 def download_text(url: str) -> str:
     """
